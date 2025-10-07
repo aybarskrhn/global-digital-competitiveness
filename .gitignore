@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+.eggs/
+.env
+.venv
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+pip-wheel-metadata/
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Data
+data/raw/
+data/interim/
+data/processed/
+*.csv
+*.xlsx
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
