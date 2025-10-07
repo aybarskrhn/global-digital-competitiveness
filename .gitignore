@@ -22,10 +22,12 @@ pip-wheel-metadata/
 
 # Data
 data/raw/
+!data/raw/
 data/interim/
 data/processed/
 *.csv
 *.xlsx
+!data/raw/it.net.user.zs_fallback.csv
 
 # IDEs
 .vscode/
