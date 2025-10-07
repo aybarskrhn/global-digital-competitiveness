@@ -79,6 +79,43 @@ tech-economy-index/
 ├── requirements.txt
 └── README.md
 
+## Getting Started
+
+### 1. Set up the environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2. Download an indicator with an offline fallback
+
+The notebook `01_download_clean.ipynb` uses the helper in `src/data_download.py` to
+download indicators. When the World Bank API is unreachable (for example when
+working offline or inside a restricted execution environment), the helper will
+automatically load a fallback CSV from `data/raw/`.
+
+```python
+from pathlib import Path
+import datetime as dt
+
+from src.data_download import fetch_indicator
+
+indicators = {"IT.NET.USER.ZS": "internet_users_pct"}
+data_date = (dt.datetime(2010, 1, 1), dt.datetime(2024, 1, 1))
+
+df = fetch_indicator(
+    indicators,
+    data_date=data_date,
+    fallback_file=Path("data/raw/it.net.user.zs_fallback.csv"),
+)
+```
+
+If the download succeeds, the cleaned data is cached under
+`data/raw/it.net.user.zs_wbdata.csv`. When the download fails, the helper raises a
+clear error message unless a fallback CSV is provided.
+
 ## Future Work
 
 Incorporate real-time data APIs (e.g., IMF, OECD)
